@@ -6,9 +6,9 @@ provider "google" {
 }
 
 resource "google_compute_instance" "default" {
-  name         = "test"
+  name         = "trials${count.index}"
   machine_type = "e2-micro"
-  count        = 2
+
 
   boot_disk {
     initialize_params {
@@ -26,4 +26,5 @@ resource "google_compute_instance" "default" {
       // Ephemeral public IP
     }
   }
+  count = 2
 }
