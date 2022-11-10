@@ -1,13 +1,14 @@
-
 provider "google" {
-  project     = "project_name"
+  credentials = file("platinum-device-339313-643482da01b4.json")
+  project     = "platinum-device-339313"
   region      = "us-central1"
+  zone        = "us-central1-a"
 }
 
 resource "google_compute_instance" "default" {
   name         = "test"
   machine_type = "e2-micro"
-
+  count        = 2
 
   boot_disk {
     initialize_params {
@@ -25,6 +26,4 @@ resource "google_compute_instance" "default" {
       // Ephemeral public IP
     }
   }
-
-
 }
